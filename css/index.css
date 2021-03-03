@@ -1,28 +1,142 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-
-*{
+* {
     box-sizing: border-box;
 }
 
-body, html{
-    padding: 0; margin: 0;
+body, html {
+    padding: 0;
+    margin: 0;
     font-family: 'Roboto', sans-serif;
     background-color: #EBEBEB;
-    color: #23231A;
+    color: #23272A;
 }
 
-/* #eee8aa */
-
-nav{
+nav {
     position: fixed;
     top: 0;
     width: 100%;
     background-color: #6D829C;
-    height: 4rem;
+    height: 60px;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
     padding: 0 1em;
     font-size: 20px;
     color: #FFF;
+}
+
+#nav_logo {
+    font-weight: 700;
+    letter-spacing: 2px;
+    font-size: 25px;
+}
+
+#wrapper {
+    background-color: #F4F7FE;
+    max-width: 1200px;
+    min-height: calc(100vh - 110px);
+    margin-top: 60px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+footer {
+    max-width: 1200px;
+    height: 50px;
+    background-color: #171712;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    color: #FFF;
+    padding: 15px;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+#search_wrapper form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 180px;
+}
+
+#location_box, #type_box {
+    background-color: #3E413A;
+    color: #FFF;
+    font-weight: 700;
+    border: none;
+    height: 40px;
+    width: 500px;
+    padding: 5px;
+    border-radius: 10px;
+    font-size: 22px;
+    text-align-last: center;
+}
+
+#location_box option, #type_box option {
+    background-color: #FFF;
+    color: #000;
+}
+
+/* #search_box{
+    height: 40px;
+    width: 500px;
+    padding: 5px;
+    border-radius: 10px;
+    font-size: 22px;
+    border: 2px solid #576060;
+    text-align: center; 
+}*/
+
+#submit_button {
+    height: 40px;
+    width: 500px;
+    padding: 5px;
+    border-radius: 10px;
+    font-size: 22px;
+    border: none;
+    background-color: #92A1B5;
+    color: #FFF;
+    font-weight: 700;
+}
+
+#location_box:focus, #type_box:focus, #submit_button:focus {
+    outline: 0;
+}
+
+/* product list */
+
+.location-header {
+    font-weight: 700;
+    font-size: 35px;
+    text-align: center;
+    margin: 30px 0 10px 0;
+}
+
+.product-table {
+    display: flex;
+    justify-content: center;
+}
+
+.product-table table {
+    width: 75%;
+    background: #C2CBD6;
+    margin: 15px 0 15px 0;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.product-table td, .product-table th {
+    width: 15%;
+    text-align: left;
+    overflow: hidden;
+    display: inline-block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.product-table th:nth-child(1), .product-table td:nth-child(1) {
+    width: 55%;
 }
