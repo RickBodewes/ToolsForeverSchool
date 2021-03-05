@@ -58,6 +58,7 @@ nav {
     margin-top: 60px;
     margin-left: auto;
     margin-right: auto;
+    padding: 20px;
 }
 
 footer {
@@ -174,4 +175,24 @@ footer {
     background-color: #F37468;
     text-align: center;
     margin: 20px auto 0 auto;
+}
+
+#delivery_location_box, #delivery_product_box{
+    background-color: #3E413A;
+    color: #FFF;
+    font-weight: 700;
+    border: none;
+    height: 40px;
+    width: 500px;
+    padding: 5px;
+    border-radius: 10px;
+    font-size: 22px;
+    text-align-last: center;
+    margin: auto;
+    display: block;
+}
+
+#delivery_location_box option, #delivery_product_box option {
+    background-color: #FFF;
+    color: #000;
 }
