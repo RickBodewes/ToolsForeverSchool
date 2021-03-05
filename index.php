@@ -1,11 +1,13 @@
 <?php
 
+session_start();
+
 require 'dependencies/PDOcon.php';
 require 'dependencies/funcs.php';
 
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,7 +17,10 @@ require 'dependencies/funcs.php';
 </head>
 <body>
     <nav>
-        <div id="nav_logo">Tools Forever</div>
+        <div id="nav_menu">
+            <div id="nav_logo">Tools Forever</div>
+            <div class="menu-item"><a href="/admin">Beheer</a></div>
+        </div>
         <div id="nav_account">Rick B.</div>
     </nav>
     <div id="wrapper">

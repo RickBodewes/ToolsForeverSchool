@@ -25,10 +25,30 @@ nav {
     color: #FFF;
 }
 
+#nav_menu {
+    display: flex;
+    align-items: center;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    height: 20px;
+    border-right: 2px solid white;
+}
+
+.menu-item a {
+    color: white;
+    text-decoration: none;
+}
+
 #nav_logo {
     font-weight: 700;
     letter-spacing: 2px;
     font-size: 25px;
+    border-right: 3px solid white;
+    padding-right: 7px;
 }
 
 #wrapper {
@@ -54,7 +74,12 @@ footer {
     font-weight: 700;
 }
 
-#search_wrapper form {
+#search_wrapper, #login_wrapper{
+    display: inline-block;
+    width: 100%;
+}
+
+#search_wrapper form, #login_wrapper form {
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -80,15 +105,14 @@ footer {
     color: #000;
 }
 
-/* #search_box{
+#login_form_email, #login_form_password {
     height: 40px;
     width: 500px;
     padding: 5px;
     border-radius: 10px;
     font-size: 22px;
     border: 2px solid #576060;
-    text-align: center; 
-}*/
+}
 
 #submit_button {
     height: 40px;
@@ -139,4 +163,15 @@ footer {
 
 .product-table th:nth-child(1), .product-table td:nth-child(1) {
     width: 55%;
+}
+
+#login_failed{
+    height: 40px;
+    width: 500px;
+    padding: 5px;
+    border-radius: 10px;
+    font-size: 22px;
+    background-color: #F37468;
+    text-align: center;
+    margin: 20px auto 0 auto;
 }
