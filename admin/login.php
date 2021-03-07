@@ -57,8 +57,8 @@ if($loggedIn){
     <div id="login_wrapper">
             <?= $loginFailed ? "<div id='login_failed'>Inlog gegevens onjuist!</div>" : "" ?>
             <form method="post">
-                <input type="email" name="email" id="login_form_email">
-                <input type="password" name="password" id="login_form_password">
+                <input type="email" name="email" id="login_form_email" placeholder="email">
+                <input type="password" name="password" id="login_form_password" placeholder="wachtwoord">
                 <button type="submit" name="submit" id="submit_button">Inloggen</button>
             </form>
         </div><!-- search_box -->

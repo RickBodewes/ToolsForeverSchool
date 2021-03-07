@@ -32,9 +32,22 @@ $(document).ready(function () {
     });
 
     toolBox.addEventListener('change', () => {
-        console.log(tools[toolBox.value]);
+        if(!ChosenContains(tools[toolBox.value].toolID)){
+            chosenTools.push(tools[toolBox.value]);
+        }
+        
+        console.log(chosenTools);
     });
 
+    function ChosenContains(toolID){
+        for(let tool of chosenTools){
+            if(tool.toolID == toolID) return true;
+        }
+        return false;
+    }
 
+    function PrintChosenTools(){
+
+    }
 
 });

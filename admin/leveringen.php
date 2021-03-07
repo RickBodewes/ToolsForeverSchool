@@ -42,28 +42,37 @@ if(!($user["role"] >= $manager)){
         <div id="nav_account"><?= $user["userName"] ?></div>
     </nav>
     <div id="wrapper">
-        <select name="store_location" id="delivery_location_box">
-            <option disabled selected hidden>Kies een locatie</option>
-            <?php
-            
-            $locStmt = $con->prepare("SELECT * FROM locations ORDER BY name");
-            $locStmt->execute();
-            $locStmt->setFetchMode(PDO::FETCH_ASSOC);
+        <div id="delivery_controls">
+            <select name="store_location" id="delivery_location_box">
+                <option disabled selected hidden>Kies een locatie</option>
+                <?php
+                
+                $locStmt = $con->prepare("SELECT * FROM locations ORDER BY name");
+                $locStmt->execute();
+                $locStmt->setFetchMode(PDO::FETCH_ASSOC);
 
-            while($locationRow = $locStmt->fetch()){
-            ?>
-            <option value="<?= $locationRow["locationID"] ?>"><?= $locationRow["name"] ?></option>
-            <?php
-            }
+                while($locationRow = $locStmt->fetch()){
+                ?>
+                <option value="<?= $locationRow["locationID"] ?>"><?= $locationRow["name"] ?></option>
+                <?php
+                }
 
-            ?>
-        </select>
+                ?>
+            </select>
 
-        <div class="location-header">Kiez de producten die zijn geleverd</div>
+            <div class="location-header">Kies de producten die zijn geleverd</div>
 
-        <select name="store_location" id="delivery_product_box">
-            <option disabled selected hidden>Kies een product</option>
-        </select>
+            <select name="store_location" id="delivery_product_box">
+                <option disabled selected hidden>Kies een product</option>
+            </select>
+        </div>
+
+        <div class="tool-delivery-box">
+            <div class="tool-delivery-box-name">as</div>
+            <div class="tool-delivery-box-amount">
+                <input type="number" min="0" id="">
+            </div>
+        </div>
         
     </div><!-- wrapper -->
     <footer>
