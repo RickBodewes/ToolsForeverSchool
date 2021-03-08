@@ -18,7 +18,7 @@ require 'dependencies/funcs.php';
 <body>
     <nav>
         <div id="nav_menu">
-            <div id="nav_logo">Tools Forever</div>
+            <div id="nav_logo"><a href="#">Tools Forever</a></div>
             <div class="menu-item"><a href="/admin">Beheer</a></div>
         </div>
         <div id="nav_account">Rick B.</div>

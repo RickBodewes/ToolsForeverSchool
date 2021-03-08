@@ -43,12 +43,12 @@ if($loggedIn){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="/css/index.css">
-    <title>Tools Forever</title>
+    <title>Inloggen | Tools Forever</title>
 </head>
 <body>
     <nav>
         <div id="nav_menu">
-            <div id="nav_logo">Tools Forever</div>
+            <div id="nav_logo"><a href="/">Tools Forever</a></div>
             <div class="menu-item"><a href="#">Beheer</a></div>
         </div>
         <div id="nav_account">Rick B.</div>

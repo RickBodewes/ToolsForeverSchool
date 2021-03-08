@@ -31,14 +31,14 @@ if(!($user["role"] >= $manager)){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="/css/index.css">
-    <title>Leveringen | Tools Forever</title>
+    <title>Bestellingen | Tools Forever</title>
 </head>
 <body>
     <nav>
         <div id="nav_menu">
             <div id="nav_logo"><a href="/">Tools Forever</a></div>
-            <?= $user["role"] >= $manager ? "<div class='menu-item'><a href='#'>Levering registreren</a></div>" : "" ?>
-            <div class='menu-item'><a href='bestellingen.php'>Bestelling registreren</a></div>
+            <?= $user["role"] >= $manager ? "<div class='menu-item'><a href='leveringen.php'>Levering registreren</a></div>" : "" ?>
+            <div class='menu-item'><a href='#'>Bestelling registreren</a></div>
         </div>
         <div id="nav_account"><?= $user["userName"] ?></div>
     </nav>
@@ -61,13 +61,13 @@ if(!($user["role"] >= $manager)){
                 ?>
             </select>
 
-            <div class="location-header">Kies de producten die zijn geleverd</div>
+            <div class="location-header">Kies de producten die zijn besteld</div>
             
             <select name="store_location" id="delivery_order_product_box">
                 <option disabled selected hidden>Kies een product</option>
             </select>
 
-            <button id="submit_button">registreer levering</button>
+            <button id="submit_button">registreer bestelling</button>
         </div>
         
         <div id="tool_delivery_order_wrapper"></div>
@@ -77,6 +77,6 @@ if(!($user["role"] >= $manager)){
         © 2021 - Tools Forever
     </footer>
     <script src="/dependencies/jquery.js"></script>
-    <script src="/js/delivery.js"></script>
+    <script src="/js/order.js"></script>
 </body>
 </html>

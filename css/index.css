@@ -51,6 +51,11 @@ nav {
     padding-right: 7px;
 }
 
+#nav_logo a{
+    color: white;
+    text-decoration: none;
+}
+
 #wrapper {
     background-color: #F4F7FE;
     max-width: 1200px;
@@ -127,7 +132,15 @@ footer {
     font-weight: 700;
 }
 
-#location_box:focus, #type_box:focus, #submit_button:focus {
+#submit_button:hover{
+    background-color: #8e9db3;
+}
+
+#submit_button:active{
+    background-color: #7e8fa9;
+}
+
+#location_box:focus, #type_box:focus, #submit_button:focus, #delivery_order_location_box:focus, #delivery_order_product_box:focus {
     outline: 0;
 }
 
@@ -177,16 +190,16 @@ footer {
     margin: 20px auto 0 auto;
 }
 
-#delivery_controls{
+#delivery_order_controls{
     margin-bottom: 50px;
     text-align: center;
 }
 
-#delivery_controls #submit_button{
+#delivery_order_controls #submit_button{
     margin: 30px 0 0 0;
 }
 
-#delivery_location_box, #delivery_product_box{
+#delivery_order_location_box, #delivery_order_product_box{
     background-color: #3E413A;
     color: #FFF;
     font-weight: 700;
@@ -201,16 +214,16 @@ footer {
     display: block;
 }
 
-#delivery_location_box option, #delivery_product_box option {
+#delivery_order_location_box option, #delivery_order_product_box option {
     background-color: #FFF;
     color: #000;
 }
 
-#tool_delivery_wrapper{
+#tool_delivery_order_wrapper{
     text-align: center;
 }
 
-.tool-delivery-box{
+.tool-delivery-order-box{
     width: 75%;
     background: #C2CBD6;
     margin: 15px auto 15px auto;
@@ -219,19 +232,22 @@ footer {
     display: flex;
 }
 
-.tool-delivery-box-name{
-    width: 80%;
+.tool-delivery-order-box-name{
+    width: 75%;
     overflow: hidden;
     display: inline-block;
     text-overflow: ellipsis;
     white-space: nowrap;
+    text-align: left;
 }
 
-.tool-delivery-box-amount{
-    width: 20%;
-    text-align: right; 
+.tool-delivery-order-box-amount{
+    width: 25%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
 }
 
-.tool-delivery-box-amount input{
+.tool-delivery-order-box-amount input{
     width: 50px;
 }

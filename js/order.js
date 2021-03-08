@@ -65,10 +65,12 @@ $(document).ready(function () {
 
             let deliveryBoxAmountInput = document.createElement('input');
             deliveryBoxAmountInput.min = 0;
+            deliveryBoxAmountInput.max = tool.stockAmount;
             deliveryBoxAmountInput.type = 'number';
             deliveryBoxAmountInput.id = 'tool_amount_' + tool.toolID;
 
             deliveryBoxAmount.appendChild(deliveryBoxAmountInput);
+            deliveryBoxAmount.innerHTML += 'voorraad: ' + tool.stockAmount;
 
             deliveryBox.appendChild(deliveryBoxName);
             deliveryBox.appendChild(deliveryBoxAmount);
@@ -86,20 +88,20 @@ $(document).ready(function () {
 
             tempDataOBJ.toolID = tool.toolID;
             tempDataOBJ.locationID = tool.locationID;
-            tempDataOBJ.deliveryAmount = document.getElementById('tool_amount_' + tool.toolID).value == '' ? 0 : parseInt(document.getElementById('tool_amount_' + tool.toolID).value);
+            tempDataOBJ.deliveryAmount = document.getElementById('tool_amount_' + tool.toolID).value == '' ? 0 : parseInt(document.getElementById('tool_amount_' + tool.toolID).value) <= tool.stockAmount ? parseInt(document.getElementById('tool_amount_' + tool.toolID).value) : tool.stockAmount;
 
             data.push(tempDataOBJ);
         }
 
         $.ajax({
-            url: '/admin/ajax/registerDelivery.php',
+            url: '/admin/ajax/registerOrder.php',
             type: 'post',
             data: { tools: data },
             success: function (result) {
                 if(JSON.parse(result).success){
                     chosenTools = [];
                     toolDeliveryWrapper.innerHTML = '';
-                    toolDeliveryWrapper.innerHTML = '<h1>Succesvol levering geregistreerd</h1>';
+                    toolDeliveryWrapper.innerHTML = '<h1>Succesvol bestelling geregistreerd</h1>';
                 }
             }
         });
