@@ -61,18 +61,15 @@ if(!($user["role"] >= $manager)){
             </select>
 
             <div class="location-header">Kies de producten die zijn geleverd</div>
-
+            
             <select name="store_location" id="delivery_product_box">
                 <option disabled selected hidden>Kies een product</option>
             </select>
-        </div>
 
-        <div class="tool-delivery-box">
-            <div class="tool-delivery-box-name">as</div>
-            <div class="tool-delivery-box-amount">
-                <input type="number" min="0" id="">
-            </div>
+            <button id="submit_button">registreer levering</button>
         </div>
+        
+        <div id="tool_delivery_wrapper"></div>
         
     </div><!-- wrapper -->
     <footer>

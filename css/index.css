@@ -179,6 +179,11 @@ footer {
 
 #delivery_controls{
     margin-bottom: 50px;
+    text-align: center;
+}
+
+#delivery_controls #submit_button{
+    margin: 30px 0 0 0;
 }
 
 #delivery_location_box, #delivery_product_box{
@@ -199,6 +204,10 @@ footer {
 #delivery_location_box option, #delivery_product_box option {
     background-color: #FFF;
     color: #000;
+}
+
+#tool_delivery_wrapper{
+    text-align: center;
 }
 
 .tool-delivery-box{

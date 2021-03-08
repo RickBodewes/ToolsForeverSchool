@@ -1,6 +1,9 @@
 $(document).ready(function () {
     let locationBox = document.getElementById('delivery_location_box');
     let toolBox = document.getElementById('delivery_product_box');
+    let toolDeliveryWrapper = document.getElementById('tool_delivery_wrapper');
+
+    let submitButton = document.getElementById('submit_button');
 
     let tools = [];
 
@@ -23,7 +26,7 @@ $(document).ready(function () {
 
                         let option = document.createElement('option');
                         option.value = tool.toolID;
-                        option.innerHTML = tool.name;
+                        option.innerHTML = tool.toolName;
                         toolBox.appendChild(option);
                     }
                 }
@@ -32,22 +35,75 @@ $(document).ready(function () {
     });
 
     toolBox.addEventListener('change', () => {
-        if(!ChosenContains(tools[toolBox.value].toolID)){
+        if(!ChosenContains(tools[toolBox.value].toolID, tools[toolBox.value].locationID)){
             chosenTools.push(tools[toolBox.value]);
         }
         
-        console.log(chosenTools);
+        PrintChosenTools()
     });
 
-    function ChosenContains(toolID){
+    function ChosenContains(toolID, locationID){
         for(let tool of chosenTools){
-            if(tool.toolID == toolID) return true;
+            if(tool.toolID == toolID && tool.locationID == locationID) return true;
         }
         return false;
     }
 
     function PrintChosenTools(){
+        toolDeliveryWrapper.innerHTML = '';
 
+        for(let tool of chosenTools){
+            let deliveryBox = document.createElement('div');
+            deliveryBox.className = 'tool-delivery-box';
+
+            let deliveryBoxName = document.createElement('div');
+            deliveryBoxName.className = 'tool-delivery-box-name';
+            deliveryBoxName.innerHTML = tool.locationName + ' - ' +tool.toolName;
+
+            let deliveryBoxAmount = document.createElement('div');
+            deliveryBoxAmount.className = 'tool-delivery-box-amount';
+
+            let deliveryBoxAmountInput = document.createElement('input');
+            deliveryBoxAmountInput.min = 0;
+            deliveryBoxAmountInput.type = 'number';
+            deliveryBoxAmountInput.id = 'tool_amount_' + tool.toolID;
+
+            deliveryBoxAmount.appendChild(deliveryBoxAmountInput);
+
+            deliveryBox.appendChild(deliveryBoxName);
+            deliveryBox.appendChild(deliveryBoxAmount);
+
+            toolDeliveryWrapper.appendChild(deliveryBox);
+        }
     }
 
+
+    //making the submit button work
+    submitButton.addEventListener('click', () => {
+        let data = [];
+        for(let tool of chosenTools){
+            let tempDataOBJ = {};
+
+            tempDataOBJ.toolID = tool.toolID;
+            tempDataOBJ.locationID = tool.locationID;
+            tempDataOBJ.deliveryAmount = document.getElementById('tool_amount_' + tool.toolID).value == '' ? 0 : parseInt(document.getElementById('tool_amount_' + tool.toolID).value);
+
+            data.push(tempDataOBJ);
+        }
+
+        $.ajax({
+            url: '/admin/ajax/registerDelivery.php',
+            type: 'post',
+            data: { tools: data },
+            success: function (result) {
+
+                console.log(result);
+
+                if(JSON.parse(result).success){
+                    toolDeliveryWrapper.innerHTML = '';
+                    toolDeliveryWrapper.innerHTML = '<h1>Succesvol levering geregistreerd</h1>';
+                }
+            }
+        });
+    });
 });
