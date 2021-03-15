@@ -156,6 +156,7 @@ footer {
 .product-table {
     display: flex;
     justify-content: center;
+    font-size: 18px;
 }
 
 .product-table table {
@@ -176,6 +177,19 @@ footer {
 }
 
 .product-table th:nth-child(1), .product-table td:nth-child(1) {
+    width: 55%;
+}
+
+.low-stock td, .low-stock th {
+    width: 20%;
+    text-align: left;
+    overflow: hidden;
+    display: inline-block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.low-stock th:nth-child(1), .low-stock td:nth-child(1) {
     width: 55%;
 }
 

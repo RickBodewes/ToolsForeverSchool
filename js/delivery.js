@@ -24,9 +24,12 @@ $(document).ready(function () {
                     for(let tool of result.data){
                         tools[tool.toolID] = tool;
 
+                        console.log(tool);
+
                         let option = document.createElement('option');
                         option.value = tool.toolID;
-                        option.innerHTML = tool.toolName;
+                        option.innerHTML = parseInt(tool.stockAmount) < parseInt(tool.minStockAmount) ? "! - " : "";
+                        option.innerHTML += tool.toolName;
                         toolBox.appendChild(option);
                     }
                 }
