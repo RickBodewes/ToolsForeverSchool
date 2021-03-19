@@ -265,3 +265,136 @@ footer {
 .tool-delivery-order-box-amount input{
     width: 50px;
 }
+
+.button{
+    height: 40px;
+    width: 500px;
+    padding: 5px;
+    border-radius: 10px;
+    font-size: 22px;
+    border: none;
+    background-color: #92A1B5;
+    color: #FFF;
+    font-weight: 700;
+    display: inline-block;
+    text-decoration: none;
+}
+.button:hover{
+    background-color: #8e9db3;
+}
+.button:active{
+    background-color: #7e8fa9;
+}
+
+.button:focus{
+    outline: 0;
+}
+
+#product_form{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 300px;
+}
+
+#product_form input{
+    height: 40px;
+    width: 500px;
+    padding: 5px;
+    border-radius: 10px;
+    font-size: 22px;
+    border: 2px solid #576060;
+}
+
+#product_form select{
+    background-color: #3E413A;
+    color: #FFF;
+    font-weight: 700;
+    border: none;
+    height: 40px;
+    width: 500px;
+    padding: 5px;
+    border-radius: 10px;
+    font-size: 22px;
+    text-align-last: center;
+}
+
+#product_form option{
+    background-color: #FFF;
+    color: #000;
+}
+
+.tool-list-box{
+    width: 75%;
+    background: #C2CBD6;
+    margin: 20px auto;
+    padding: 15px;
+    border-radius: 10px;
+    display: flex;
+    height: 60px;
+}
+
+.tool-list-name{
+    width: 60%;
+    overflow: hidden;
+    display: inline-flex;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: left;
+    align-items: center;
+}
+
+.tool-list-buttons{
+    width: 40%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+
+.tool-list-buttons a{
+    width: 100%;
+    color: #23272A;
+    text-decoration: none;
+    text-align: right;
+}
+
+.tool-list-buttons img{
+    width: 35px;
+}
+
+#location_form{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 300px;
+}
+
+#location_form input{
+    height: 40px;
+    width: 500px;
+    padding: 5px;
+    border-radius: 10px;
+    font-size: 22px;
+    border: 2px solid #576060;
+}
+
+#location_form select{
+    background-color: #3E413A;
+    color: #FFF;
+    font-weight: 700;
+    border: none;
+    height: 40px;
+    width: 500px;
+    padding: 5px;
+    border-radius: 10px;
+    font-size: 22px;
+    text-align-last: center;
+}
+
+#location_form option{
+    background-color: #FFF;
+    color: #000;
+}

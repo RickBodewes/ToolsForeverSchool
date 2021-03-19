@@ -35,21 +35,16 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
             <div id="nav_logo"><a href="/">Tools Forever</a></div>
             <?= $user["role"] >= $manager ? "<div class='menu-item'><a href='leveringen.php'>Levering registreren</a></div>" : "" ?>
             <div class='menu-item'><a href='bestellingen.php'>Bestelling registreren</a></div>
-            <div class='menu-item'><a href='#'>producten</a></div>
-            <div class='menu-item'><a href='locations.php'>locaties</a></div>
+            <div class='menu-item'><a href='products.php'>producten</a></div>
+            <div class='menu-item'><a href='#'>locaties</a></div>
         </div>
         <div id="nav_account"><?= $user["userName"] ?></div>
     </nav>
     <div id="wrapper">
-
-        <div class="location-header">
-            <a href="editProduct.php?new=true" type="submit" name="submit" class="button">Nieuw product</a>
-        </div>
-
         <?php
         
         //making the list
-        $query = "SELECT tools.toolID, tools.Name, tools.manufacturer, types.typeName FROM tools join types on tools.typeID = types.typeID";
+        $query = "SELECT * FROM locations ORDER BY name";
         $stmt = $con->prepare($query);
         $stmt->execute();
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
@@ -59,9 +54,9 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
         ?>
 
             <div class="tool-list-box">
-                <div class="tool-list-name"><?= $row["typeName"] . " - " . $row["Name"] ?></div>
+                <div class="tool-list-name"><?= $row["name"] ?></div>
                 <div class="tool-list-buttons">
-                    <a href="editProduct.php?new=false&id=<?= $row["toolID"] ?>"><img src="../img/edit.svg" alt="bewerken"></a>
+                    <a href="editLocation.php?id=<?= $row["locationID"] ?>">Pas productenlijst aan</a>
                 </div>
             </div>
 

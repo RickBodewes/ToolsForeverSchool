@@ -39,6 +39,8 @@ if(!($user["role"] >= $manager)){
             <div id="nav_logo"><a href="/">Tools Forever</a></div>
             <?= $user["role"] >= $manager ? "<div class='menu-item'><a href='leveringen.php'>Levering registreren</a></div>" : "" ?>
             <div class='menu-item'><a href='#'>Bestelling registreren</a></div>
+            <div class='menu-item'><a href='products.php'>producten</a></div>
+            <div class='menu-item'><a href='locations.php'>locaties</a></div>
         </div>
         <div id="nav_account"><?= $user["userName"] ?></div>
     </nav>
