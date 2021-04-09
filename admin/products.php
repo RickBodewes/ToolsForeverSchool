@@ -12,7 +12,7 @@ if(!$loggedIn){
 
 //getting the role (and other data) of the employee
 
-$query = "SELECT * FROM users WHERE userID = :userid AND sessionID = :sessionid";
+$query = "SELECT * FROM t4eusers WHERE userID = :userid AND sessionID = :sessionid";
 $stmt = $con->prepare($query);
 $stmt->bindValue(':userid', $_SESSION['lUserID']);
 $stmt->bindValue(':sessionid', $_SESSION['lUserToken']);
@@ -37,6 +37,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
             <div class='menu-item'><a href='bestellingen.php'>Bestelling registreren</a></div>
             <div class='menu-item'><a href='#'>producten</a></div>
             <div class='menu-item'><a href='locations.php'>locaties</a></div>
+            <?= $user["role"] >= $manager ? "<div class='menu-item'><a href='users.php'>gebruikers</a></div>" : "" ?>
         </div>
         <div id="nav_account"><?= $user["userName"] ?></div>
     </nav>
@@ -49,7 +50,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
         <?php
         
         //making the list
-        $query = "SELECT tools.toolID, tools.Name, tools.manufacturer, types.typeName FROM tools join types on tools.typeID = types.typeID";
+        $query = "SELECT t4etools.toolID, t4etools.Name, t4etools.manufacturer, t4etypes.typeName FROM t4etools join t4etypes on t4etools.typeID = t4etypes.typeID";
         $stmt = $con->prepare($query);
         $stmt->execute();
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
@@ -73,7 +74,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
     </div><!-- wrapper -->
     <footer>
-        © 2021 - Tools Forever
+        © 2021 - Tools Forever |&nbsp;<a href="logout.php">Uitloggen</a>
     </footer>
 </body>
 </html>

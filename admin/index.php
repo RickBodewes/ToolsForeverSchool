@@ -12,7 +12,7 @@ if(!$loggedIn){
 
 //getting the role (and other data) of the employee
 
-$query = "SELECT * FROM users WHERE userID = :userid AND sessionID = :sessionid";
+$query = "SELECT * FROM t4eusers WHERE userID = :userid AND sessionID = :sessionid";
 $stmt = $con->prepare($query);
 $stmt->bindValue(':userid', $_SESSION['lUserID']);
 $stmt->bindValue(':sessionid', $_SESSION['lUserToken']);
@@ -36,6 +36,8 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
             <?= $user["role"] >= $manager ? "<div class='menu-item'><a href='leveringen.php'>Levering registreren</a></div>" : "" ?>
             <div class='menu-item'><a href='bestellingen.php'>Bestelling registreren</a></div>
             <div class='menu-item'><a href='products.php'>producten</a></div>
+            <div class='menu-item'><a href='locations.php'>locaties</a></div>
+            <?= $user["role"] >= $manager ? "<div class='menu-item'><a href='users.php'>gebruikers</a></div>" : "" ?>
         </div>
         <div id="nav_account"><?= $user["userName"] ?></div>
     </nav>
@@ -47,13 +49,13 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
         <?php
         
         //making the list
-        $locationsQuery = "SELECT * FROM locations";
+        $locationsQuery = "SELECT * FROM t4elocations";
         $locationStmt = $con->prepare($locationsQuery);
         $locationStmt->execute();
         $locationStmt->setFetchMode(PDO::FETCH_ASSOC);
 
         while($locationRow = $locationStmt->fetch()){
-            $toolsQuery = "SELECT tools.name, locationstock.minStockAmount, locationstock.stockAmount FROM locationstock JOIN tools ON locationstock.toolID = tools.toolID WHERE locationstock.locationID = :locationID AND locationstock.stockAmount < locationstock.minStockAmount";
+            $toolsQuery = "SELECT t4etools.name, t4elocationstock.minStockAmount, t4elocationstock.stockAmount FROM t4elocationstock JOIN t4etools ON t4elocationstock.toolID = t4etools.toolID WHERE t4elocationstock.locationID = :locationID AND t4elocationstock.stockAmount < t4elocationstock.minStockAmount";
 
             //preparing the statement and binding values
             $toolsStmt = $con->prepare($toolsQuery);
@@ -97,7 +99,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
     </div><!-- wrapper -->
     <footer>
-        © 2021 - Tools Forever
+        © 2021 - Tools Forever |&nbsp;<a href="logout.php">Uitloggen</a>
     </footer>
 </body>
 </html>

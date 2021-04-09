@@ -10,7 +10,7 @@ $success = false;
 $data = array();
 
 if($loggedIn){
-    $stmt = $con->prepare("SELECT tools.toolID, tools.name AS toolName, locationstock.stockAmount, locationstock.minStockAmount, locations.locationID, locations.name AS locationName FROM locationstock JOIN tools ON locationstock.toolID = tools.toolID JOIN locations ON locationstock.locationID = locations.locationID WHERE locationstock.locationID = :locationid");
+    $stmt = $con->prepare("SELECT t4etools.toolID, t4etools.name AS toolName, t4elocationstock.stockAmount, t4elocationstock.minStockAmount, t4elocations.locationID, t4elocations.name AS locationName FROM t4elocationstock JOIN t4etools ON t4elocationstock.toolID = t4etools.toolID JOIN t4elocations ON t4elocationstock.locationID = t4elocations.locationID WHERE t4elocationstock.locationID = :locationid");
     $stmt->bindValue(":locationid", $_GET["locationID"]);
     $stmt->execute();
     $data = $stmt->fetchAll();

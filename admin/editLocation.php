@@ -12,7 +12,7 @@ if(!$loggedIn){
 
 //getting the role (and other data) of the employee
 
-$query = "SELECT * FROM users WHERE userID = :userid AND sessionID = :sessionid";
+$query = "SELECT * FROM t4eusers WHERE userID = :userid AND sessionID = :sessionid";
 $stmt = $con->prepare($query);
 $stmt->bindValue(':userid', $_SESSION['lUserID']);
 $stmt->bindValue(':sessionid', $_SESSION['lUserToken']);
@@ -20,7 +20,7 @@ $stmt->execute();
 $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
 //getting location data
-$query = "SELECT * FROM locations WHERE locationID = :locationid";
+$query = "SELECT * FROM t4elocations WHERE locationID = :locationid";
 $stmt = $con->prepare($query);
 $stmt->bindValue(':locationid', $_GET['id']);
 $stmt->execute();
@@ -44,6 +44,7 @@ $location = $stmt->fetch(PDO::FETCH_ASSOC);
             <div class='menu-item'><a href='bestellingen.php'>Bestelling registreren</a></div>
             <div class='menu-item'><a href='products.php'>producten</a></div>
             <div class='menu-item'><a href='locations.php'>locaties</a></div>
+            <?= $user["role"] >= $manager ? "<div class='menu-item'><a href='users.php'>gebruikers</a></div>" : "" ?>
         </div>
         <div id="nav_account"><?= $user["userName"] ?></div>
     </nav>
@@ -61,7 +62,7 @@ $location = $stmt->fetch(PDO::FETCH_ASSOC);
 
             <?php
                 
-            $stmt = $con->prepare("SELECT * FROM tools WHERE toolID NOT IN (SELECT toolID FROM locationStock WHERE locationID = :locationid)");
+            $stmt = $con->prepare("SELECT * FROM t4etools WHERE toolID NOT IN (SELECT toolID FROM t4elocationStock WHERE locationID = :locationid)");
             $stmt->bindValue(':locationid', $location["locationID"]);
             $stmt->execute();
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
@@ -88,7 +89,7 @@ $location = $stmt->fetch(PDO::FETCH_ASSOC);
         <?php
         
         //making the list
-        $query = "SELECT locationstock.toolID, tools.Name FROM locationstock JOIN tools on locationstock.toolID = tools.toolID WHERE locationstock.locationID = :locationid";
+        $query = "SELECT t4elocationstock.toolID, t4etools.Name FROM t4elocationstock JOIN t4etools on t4elocationstock.toolID = t4etools.toolID WHERE t4elocationstock.locationID = :locationid";
         $stmt = $con->prepare($query);
         $stmt->bindValue(':locationid', $location["locationID"]);
         $stmt->execute();
@@ -113,7 +114,7 @@ $location = $stmt->fetch(PDO::FETCH_ASSOC);
 
     </div><!-- wrapper -->
     <footer>
-        © 2021 - Tools Forever
+        © 2021 - Tools Forever |&nbsp;<a href="logout.php">Uitloggen</a>
     </footer>
     <script src="/dependencies/jquery.js"></script>
     <script src="../js/editStore.js"></script>

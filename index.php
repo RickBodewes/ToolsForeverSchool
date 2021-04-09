@@ -21,7 +21,7 @@ require 'dependencies/funcs.php';
             <div id="nav_logo"><a href="#">Tools Forever</a></div>
             <div class="menu-item"><a href="/admin">Beheer</a></div>
         </div>
-        <div id="nav_account">Rick B.</div>
+        <div id="nav_account"></div>
     </nav>
     <div id="wrapper">
         <div id="search_wrapper">
@@ -30,7 +30,7 @@ require 'dependencies/funcs.php';
                     <option disabled selected hidden>Kies een locatie</option>
                     <?php
                     
-                    $locStmt = $con->prepare("SELECT * FROM locations ORDER BY name");
+                    $locStmt = $con->prepare("SELECT * FROM t4elocations ORDER BY name");
                     $locStmt->execute();
                     $locStmt->setFetchMode(PDO::FETCH_ASSOC);
 
@@ -46,7 +46,7 @@ require 'dependencies/funcs.php';
                     <option disabled selected hidden>Kies een type product</option>
                     <?php
                     
-                    $typeStmt = $con->prepare("SELECT * FROM types ORDER BY typeName");
+                    $typeStmt = $con->prepare("SELECT * FROM t4etypes ORDER BY typeName");
                     $typeStmt->execute();
                     $typeStmt->setFetchMode(PDO::FETCH_ASSOC);
 
@@ -65,7 +65,7 @@ require 'dependencies/funcs.php';
         <?php
         
         //making the list
-        $locationsQuery = "SELECT * FROM locations";
+        $locationsQuery = "SELECT * FROM t4elocations";
         $locationsQuery .= isset($_GET["store_location"]) ? " WHERE locationID = :locationID" : "";
 
         //preparing the statement and binding values
@@ -79,7 +79,7 @@ require 'dependencies/funcs.php';
         $locationStmt->setFetchMode(PDO::FETCH_ASSOC);
 
         while($locationRow = $locationStmt->fetch()){
-            $toolsQuery = "SELECT tools.name, tools.manufacturer, tools.sellprice, locationstock.stockAmount FROM locationstock JOIN tools ON locationstock.toolID = tools.toolID WHERE locationstock.locationID = :locationID";
+            $toolsQuery = "SELECT t4etools.name, t4etools.manufacturer, t4etools.sellprice, t4elocationstock.stockAmount FROM t4elocationstock JOIN t4etools ON t4elocationstock.toolID = t4etools.toolID WHERE t4elocationstock.locationID = :locationID";
             $toolsQuery .= isset($_GET["product_type"]) ? " AND tools.typeID = :typeID" : "";
 
             //preparing the statement and binding values
@@ -114,20 +114,30 @@ require 'dependencies/funcs.php';
             ?>
 
             <div class="product-table">
-                <table>
-                    <tr>
-                        <th>Product</th>
-                        <th>Fabriek</th>
-                        <th>Vooraad</th>
-                        <th>Verkoopprijs</th>
-                    </tr>
-                    <tr>
-                        <td><?= $toolRow["name"] ?></td>
-                        <td><?= $toolRow["manufacturer"] ?></td>
-                        <td><?= $toolRow["stockAmount"] ?></td>
-                        <td>&euro; <?= $toolRow["sellprice"] ?></td>
-                    </tr>
-                </table>
+                <div class="product-table-name">
+                    <table>
+                        <tr>
+                            <th>Product</th>
+                        </tr>
+                        <tr>
+                            <td><?= $toolRow["name"] ?></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="product-table-info">
+                    <table>
+                        <tr>
+                            <th>Fabriek</th>
+                            <th>Vooraad</th>
+                            <th>Verkoopprijs</th>
+                        </tr>
+                        <tr>
+                            <td><?= $toolRow["manufacturer"] ?></td>
+                            <td><?= $toolRow["stockAmount"] ?></td>
+                            <td>&euro; <?= $toolRow["sellprice"] ?></td>
+                        </tr>
+                    </table>
+                </div>
             </div>
 
             <?php

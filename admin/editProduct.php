@@ -12,7 +12,7 @@ if(!$loggedIn){
 
 //getting the role (and other data) of the employee
 
-$query = "SELECT * FROM users WHERE userID = :userid AND sessionID = :sessionid";
+$query = "SELECT * FROM t4eusers WHERE userID = :userid AND sessionID = :sessionid";
 $stmt = $con->prepare($query);
 $stmt->bindValue(':userid', $_SESSION['lUserID']);
 $stmt->bindValue(':sessionid', $_SESSION['lUserToken']);
@@ -27,7 +27,7 @@ if(isset($_GET["new"])){
 
 //getting tool data if it's an edit
 
-$query = "SELECT * FROM tools WHERE toolID = :toolid LIMIT 1";
+$query = "SELECT * FROM t4etools WHERE toolID = :toolid LIMIT 1";
 $stmt = $con->prepare($query);
 $stmt->bindValue(':toolid', $_GET['id']);
 $stmt->execute();
@@ -51,6 +51,7 @@ $product = $stmt->fetch(PDO::FETCH_ASSOC);
             <div class='menu-item'><a href='bestellingen.php'>Bestelling registreren</a></div>
             <div class='menu-item'><a href='products.php'>producten</a></div>
             <div class='menu-item'><a href='locations.php'>locaties</a></div>
+            <?= $user["role"] >= $manager ? "<div class='menu-item'><a href='users.php'>gebruikers</a></div>" : "" ?>
         </div>
         <div id="nav_account"><?= $user["userName"] ?></div>
     </nav>
@@ -61,14 +62,21 @@ $product = $stmt->fetch(PDO::FETCH_ASSOC);
                 <?= $new ? "<option disabled selected hidden>Kies een type product</option>" : "" ?>
                 <?php
                 
-                $typeStmt = $con->prepare("SELECT * FROM types ORDER BY typeName");
-                $typeStmt->execute();
-                $typeStmt->setFetchMode(PDO::FETCH_ASSOC);
-                while($typeRow = $typeStmt->fetch()){
-                ?>
-                <option value="<?= $typeRow["typeID"] ?>" <?= $product["toolID"] == $typeRow["typeID"] ? "selected" : ""?>><?= $typeRow["typeName"] ?></option>
-                <?php
-                }
+                    $typeStmt = $con->prepare("SELECT * FROM t4etypes ORDER BY typeName");
+                    $typeStmt->execute();
+                    $typeStmt->setFetchMode(PDO::FETCH_ASSOC);
+                    while($typeRow = $typeStmt->fetch()){
+
+                        if($new) {
+                            ?>
+                            <option value="<?= $typeRow["typeID"] ?>"><?= $typeRow["typeName"] ?></option>
+                            <?php
+                        } else {
+                            ?>
+                            <option value="<?= $typeRow["typeID"] ?>" <?= $product["toolID"] == $typeRow["typeID"] ? "selected" : ""?>><?= $typeRow["typeName"] ?></option>
+                            <?php
+                        }
+                    }
                 ?>
             </select>
 
@@ -87,7 +95,7 @@ $product = $stmt->fetch(PDO::FETCH_ASSOC);
 
     </div><!-- wrapper -->
     <footer>
-        © 2021 - Tools Forever
+        © 2021 - Tools Forever |&nbsp;<a href="logout.php">Uitloggen</a>
     </footer>
     <script src="/dependencies/jquery.js"></script>
     <script src="../js/<?= $new ? "newTool" : "editTool"?>.js"></script>

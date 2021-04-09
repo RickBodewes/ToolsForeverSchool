@@ -12,7 +12,7 @@ if(!$loggedIn){
 
 //getting the role (and other data) of the employee
 
-$query = "SELECT * FROM users WHERE userID = :userid AND sessionID = :sessionid";
+$query = "SELECT * FROM t4eusers WHERE userID = :userid AND sessionID = :sessionid";
 $stmt = $con->prepare($query);
 $stmt->bindValue(':userid', $_SESSION['lUserID']);
 $stmt->bindValue(':sessionid', $_SESSION['lUserToken']);
@@ -41,6 +41,7 @@ if(!($user["role"] >= $manager)){
             <div class='menu-item'><a href='bestellingen.php'>Bestelling registreren</a></div>
             <div class='menu-item'><a href='products.php'>producten</a></div>
             <div class='menu-item'><a href='locations.php'>locaties</a></div>
+            <?= $user["role"] >= $manager ? "<div class='menu-item'><a href='users.php'>gebruikers</a></div>" : "" ?>
         </div>
         <div id="nav_account"><?= $user["userName"] ?></div>
     </nav>
@@ -50,7 +51,7 @@ if(!($user["role"] >= $manager)){
                 <option disabled selected hidden>Kies een locatie</option>
                 <?php
                 
-                $locStmt = $con->prepare("SELECT * FROM locations ORDER BY name");
+                $locStmt = $con->prepare("SELECT * FROM t4elocations ORDER BY name");
                 $locStmt->execute();
                 $locStmt->setFetchMode(PDO::FETCH_ASSOC);
 
@@ -76,7 +77,7 @@ if(!($user["role"] >= $manager)){
         
     </div><!-- wrapper -->
     <footer>
-        © 2021 - Tools Forever
+        © 2021 - Tools Forever |&nbsp;<a href="logout.php">Uitloggen</a>
     </footer>
     <script src="/dependencies/jquery.js"></script>
     <script src="/js/delivery.js"></script>

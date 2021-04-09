@@ -12,7 +12,7 @@ if($loggedIn){
     if(isset($_POST["tools"])){
 
         foreach($_POST["tools"] as $tool){
-            $query = "UPDATE locationstock SET stockAmount = stockAmount - :deliveryamount WHERE locationID = :locationid AND toolID = :toolid";
+            $query = "UPDATE t4elocationstock SET stockAmount = stockAmount - :deliveryamount WHERE locationID = :locationid AND toolID = :toolid";
             $stmt = $con->prepare($query);
             $stmt->bindvalue(":deliveryamount", $tool["deliveryAmount"]);
             $stmt->bindvalue(":locationid", $tool["locationID"]);

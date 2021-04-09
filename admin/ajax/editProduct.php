@@ -10,7 +10,7 @@ $success = false;
 $data = array();
 
 if($loggedIn){
-    $stmt = $con->prepare("UPDATE tools SET toolID = :typeid, Name = :name, manufacturer = :manufacturer, buyPrice = :buyprice, sellPrice = :sellprice WHERE toolID = :toolid");
+    $stmt = $con->prepare("UPDATE t4etools SET toolID = :typeid, Name = :name, manufacturer = :manufacturer, buyPrice = :buyprice, sellPrice = :sellprice WHERE toolID = :toolid");
     $stmt->bindValue(":toolid", $_POST["toolID"]);
     $stmt->bindValue(":typeid", $_POST["typeID"]);
     $stmt->bindValue(":name", $_POST["name"]);

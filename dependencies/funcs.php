@@ -5,7 +5,12 @@
 $admin = 3;
 $manager = 2;
 $employee = 1;
-//might for customers do 1 in future
+
+$roles = array();
+
+$roles[$admin] = "admin"; $roles[$manager] = "manager"; $roles[$employee] = "employee"; 
+
+//might for customers do 0 in future
 
 //this file contains usefull functions 
 

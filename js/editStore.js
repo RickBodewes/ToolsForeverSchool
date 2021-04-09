@@ -27,18 +27,20 @@ $(document).ready(function () {
 });
 
 function removeFromLocation(locationID, productID){
-    $.ajax({
-        url: '/admin/ajax/removeStoreProduct.php',
-        type: 'post',
-        data: { 
-            locationID: locationID,
-            toolID: productID
-         },
-        success: function (result) {
-
-            if(JSON.parse(result).success){
-                location.reload();
+    if(confirm('Weet je zeker dat je dit product wilt verwijderen uit deze winkel?')){
+        $.ajax({
+            url: '/admin/ajax/removeStoreProduct.php',
+            type: 'post',
+            data: { 
+                locationID: locationID,
+                toolID: productID
+             },
+            success: function (result) {
+    
+                if(JSON.parse(result).success){
+                    location.reload();
+                }
             }
-        }
-    });
+        }); 
+    }
 }

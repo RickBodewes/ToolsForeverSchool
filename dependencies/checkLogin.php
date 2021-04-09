@@ -5,7 +5,7 @@ $loggedIn = false;
 if(isset($_SESSION['loggedIn'])){
     if($_SESSION['loggedIn']){
         if(isset($_SESSION['lUserID']) && isset($_SESSION['lUserToken'])){
-            $query = "SELECT * FROM users WHERE userID = :userid AND sessionID = :sessionid LIMIT 1";
+            $query = "SELECT * FROM t4eusers WHERE userID = :userid AND sessionID = :sessionid LIMIT 1";
             $stmt = $con->prepare($query);
             $stmt->bindValue(':userid', $_SESSION['lUserID']);
             $stmt->bindValue(':sessionid', $_SESSION['lUserToken']);

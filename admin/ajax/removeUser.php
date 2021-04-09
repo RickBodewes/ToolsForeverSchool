@@ -10,9 +10,8 @@ $success = false;
 $data = array();
 
 if($loggedIn){
-    $stmt = $con->prepare("DELETE FROM t4elocationstock WHERE locationID = :locationid AND toolID = :toolid");
-    $stmt->bindValue(":locationid", $_POST["locationID"]);
-    $stmt->bindValue(":toolid", $_POST["toolID"]);
+    $stmt = $con->prepare("DELETE FROM t4eusers WHERE userID = :userid");
+    $stmt->bindValue(":userid", $_POST["userID"]);
     $stmt->execute();
 
     $success = true;

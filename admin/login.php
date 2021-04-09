@@ -15,7 +15,7 @@ if($loggedIn){
         if(isset($_POST["email"]) && isset($_POST["password"])){
             $passwordHashed = EncryptPass($_POST["password"], $_POST["email"]);
 
-            $query = "SELECT * FROM users WHERE userEmail = :email AND password = :password LIMIT 1";
+            $query = "SELECT * FROM t4eusers WHERE userEmail = :email AND password = :password LIMIT 1";
             $stmt = $con->prepare($query);
             $stmt->bindvalue(":email", $_POST["email"]);
             $stmt->bindvalue(":password", $passwordHashed);
@@ -51,7 +51,7 @@ if($loggedIn){
             <div id="nav_logo"><a href="/">Tools Forever</a></div>
             <div class="menu-item"><a href="#">Beheer</a></div>
         </div>
-        <div id="nav_account">Rick B.</div>
+        <div id="nav_account"></div>
     </nav>
     <div id="wrapper">
     <div id="login_wrapper">

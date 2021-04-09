@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap');
 * {
     box-sizing: border-box;
 }
@@ -51,7 +51,7 @@ nav {
     padding-right: 7px;
 }
 
-#nav_logo a{
+#nav_logo a {
     color: white;
     text-decoration: none;
 }
@@ -80,7 +80,13 @@ footer {
     font-weight: 700;
 }
 
-#search_wrapper, #login_wrapper{
+footer a {
+    color: white;
+    text-decoration: none;
+    font-weight: 900;
+}
+
+#search_wrapper, #login_wrapper {
     display: inline-block;
     width: 100%;
 }
@@ -132,11 +138,11 @@ footer {
     font-weight: 700;
 }
 
-#submit_button:hover{
+#submit_button:hover {
     background-color: #8e9db3;
 }
 
-#submit_button:active{
+#submit_button:active {
     background-color: #7e8fa9;
 }
 
@@ -155,29 +161,49 @@ footer {
 
 .product-table {
     display: flex;
-    justify-content: center;
+    text-align: center;
     font-size: 18px;
-}
-
-.product-table table {
     width: 75%;
     background: #C2CBD6;
-    margin: 15px 0 15px 0;
+    margin: 15px auto 15px auto;
     padding: 15px;
     border-radius: 10px;
 }
 
-.product-table td, .product-table th {
-    width: 15%;
+.product-table-name, .product-table-info{
     text-align: left;
-    overflow: hidden;
+    width: 50%;
+}
+
+.product-table table{
     display: inline-block;
+    width: 100%;
+    border-spacing: 0;
+}
+
+.product-table tbody{
+    display: inline-block;
+    width: 100%;
+}
+
+.product-table tr{
+    display: inline-block;
+    width: 100%;
+}
+
+.product-table th, .product-table td{
+    display: inline-block;
+    overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
 
-.product-table th:nth-child(1), .product-table td:nth-child(1) {
-    width: 55%;
+.product-table-name th, .product-table-name td{
+    width: 100%;
+}
+
+.product-table-info th, .product-table-info td{
+    width: 30%;
 }
 
 .low-stock td, .low-stock th {
@@ -193,7 +219,7 @@ footer {
     width: 55%;
 }
 
-#login_failed{
+#login_failed {
     height: 40px;
     width: 500px;
     padding: 5px;
@@ -204,16 +230,16 @@ footer {
     margin: 20px auto 0 auto;
 }
 
-#delivery_order_controls{
+#delivery_order_controls {
     margin-bottom: 50px;
     text-align: center;
 }
 
-#delivery_order_controls #submit_button{
+#delivery_order_controls #submit_button {
     margin: 30px 0 0 0;
 }
 
-#delivery_order_location_box, #delivery_order_product_box{
+#delivery_order_location_box, #delivery_order_product_box {
     background-color: #3E413A;
     color: #FFF;
     font-weight: 700;
@@ -233,11 +259,11 @@ footer {
     color: #000;
 }
 
-#tool_delivery_order_wrapper{
+#tool_delivery_order_wrapper {
     text-align: center;
 }
 
-.tool-delivery-order-box{
+.tool-delivery-order-box {
     width: 75%;
     background: #C2CBD6;
     margin: 15px auto 15px auto;
@@ -246,7 +272,7 @@ footer {
     display: flex;
 }
 
-.tool-delivery-order-box-name{
+.tool-delivery-order-box-name {
     width: 75%;
     overflow: hidden;
     display: inline-block;
@@ -255,18 +281,18 @@ footer {
     text-align: left;
 }
 
-.tool-delivery-order-box-amount{
+.tool-delivery-order-box-amount {
     width: 25%;
     display: flex;
     justify-content: space-between;
     flex-direction: row-reverse;
 }
 
-.tool-delivery-order-box-amount input{
+.tool-delivery-order-box-amount input {
     width: 50px;
 }
 
-.button{
+.button {
     height: 40px;
     width: 500px;
     padding: 5px;
@@ -279,18 +305,20 @@ footer {
     display: inline-block;
     text-decoration: none;
 }
-.button:hover{
+
+.button:hover {
     background-color: #8e9db3;
 }
-.button:active{
+
+.button:active {
     background-color: #7e8fa9;
 }
 
-.button:focus{
+.button:focus {
     outline: 0;
 }
 
-#product_form{
+#product_form {
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -298,7 +326,7 @@ footer {
     height: 300px;
 }
 
-#product_form input{
+#product_form input {
     height: 40px;
     width: 500px;
     padding: 5px;
@@ -307,7 +335,7 @@ footer {
     border: 2px solid #576060;
 }
 
-#product_form select{
+#product_form select {
     background-color: #3E413A;
     color: #FFF;
     font-weight: 700;
@@ -320,12 +348,12 @@ footer {
     text-align-last: center;
 }
 
-#product_form option{
+#product_form option {
     background-color: #FFF;
     color: #000;
 }
 
-.tool-list-box{
+.tool-list-box, .location-list-box{
     width: 75%;
     background: #C2CBD6;
     margin: 20px auto;
@@ -335,7 +363,7 @@ footer {
     height: 60px;
 }
 
-.tool-list-name{
+.tool-list-name, .location-list-name {
     width: 60%;
     overflow: hidden;
     display: inline-flex;
@@ -345,7 +373,7 @@ footer {
     align-items: center;
 }
 
-.tool-list-buttons{
+.tool-list-buttons, .location-list-buttons {
     width: 40%;
     display: flex;
     justify-content: space-between;
@@ -353,18 +381,21 @@ footer {
     align-items: center;
 }
 
-.tool-list-buttons a{
+.tool-list-buttons a, .location-list-buttons a {
     width: 100%;
     color: #23272A;
     text-decoration: none;
     text-align: right;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
-.tool-list-buttons img{
+.tool-list-buttons img, .location-list-buttons img {
     width: 35px;
 }
 
-#location_form{
+#location_form {
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -372,7 +403,7 @@ footer {
     height: 300px;
 }
 
-#location_form input{
+#location_form input {
     height: 40px;
     width: 500px;
     padding: 5px;
@@ -381,7 +412,7 @@ footer {
     border: 2px solid #576060;
 }
 
-#location_form select{
+#location_form select {
     background-color: #3E413A;
     color: #FFF;
     font-weight: 700;
@@ -394,7 +425,161 @@ footer {
     text-align-last: center;
 }
 
-#location_form option{
+#location_form option {
     background-color: #FFF;
     color: #000;
+}
+
+.user-list-box {
+    width: 75%;
+    background: #C2CBD6;
+    margin: 20px auto;
+    padding: 15px;
+    border-radius: 10px;
+    display: flex;
+    height: 60px;
+}
+
+.user-list-name {
+    width: 70%;
+    overflow: hidden;
+    display: inline-flex;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: left;
+    align-items: center;
+}
+
+.user-list-buttons {
+    width: 30%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    align-items: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.user-list-buttons a {
+    width: 100%;
+    color: #23272A;
+    text-decoration: none;
+    text-align: right;
+}
+
+#user_form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 300px;
+}
+
+#user_form input {
+    height: 40px;
+    width: 500px;
+    padding: 5px;
+    border-radius: 10px;
+    font-size: 22px;
+    border: 2px solid #576060;
+}
+
+#user_form select {
+    background-color: #3E413A;
+    color: #FFF;
+    font-weight: 700;
+    border: none;
+    height: 40px;
+    width: 500px;
+    padding: 5px;
+    border-radius: 10px;
+    font-size: 22px;
+    text-align-last: center;
+}
+
+#user_form option {
+    background-color: #FFF;
+    color: #000;
+}
+
+@media only screen and (max-width: 750px) {
+    .product-table{
+        font-size: 16px;
+        width: 85%;
+        flex-direction: column;
+    }
+
+    .product-table-name, .product-table-info{
+        width: 100%;
+    }
+
+    .button, #login_form_email, #login_form_password, #submit_button, #location_box, #type_box, #delivery_order_location_box, #delivery_order_product_box, #product_form input, #product_form select{
+        width: 85%;
+    }
+
+    .tool-delivery-order-box, .tool-list-box{
+        width: 85%;
+        flex-direction: column;
+    }
+
+    .location-list-box{
+        width: 85%;
+    }
+
+    .location-list-name, .location-list-buttons{
+        width: 50%;
+    }
+
+    .tool-list-box{
+        height: 90px;
+        justify-content: space-between;
+    }
+
+    .tool-delivery-order-box-name, .tool-list-name{
+        width: 100%;
+    }
+
+    .tool-delivery-order-box-amount, .tool-list-buttons{
+        width: 100%;
+    }
+}
+
+/* nav button responsiveness */
+@media only screen and (max-width: 1050px) {
+    nav{
+       height: 270px; 
+       justify-content: center;
+       align-items: flex-start;
+    }
+
+    #wrapper {
+        min-height: calc(100vh - 320px);
+        margin-top: 270px;
+    }
+
+    #nav_logo{
+        border-bottom: 3px solid white;
+        border-right: none;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 20px;
+        padding: 16px;
+    }
+    
+    #nav_menu{
+        flex-direction: column;
+        width: 100%;
+    }
+
+    #nav_account{
+        display: none;
+    }
+
+    .menu-item{
+        border-bottom: 2px solid white;
+        border-right: none;
+        margin-bottom: 10px;
+        padding: 12px;
+    }
 }

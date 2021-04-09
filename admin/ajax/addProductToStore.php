@@ -10,7 +10,7 @@ $success = false;
 $data = array();
 
 if($loggedIn){
-    $stmt = $con->prepare("INSERT INTO locationstock (locationID, toolID, stockAmount, minStockAmount) VALUES (:locationid, :toolid, :stockamount, :minstockamount)");
+    $stmt = $con->prepare("INSERT INTO t4elocationstock (locationID, toolID, stockAmount, minStockAmount) VALUES (:locationid, :toolid, :stockamount, :minstockamount)");
     $stmt->bindValue(":locationid", $_POST["locationID"]);
     $stmt->bindValue(":toolid", $_POST["toolID"]);
     $stmt->bindValue(":stockamount", $_POST["stockAmount"]);
